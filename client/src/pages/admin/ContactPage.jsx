@@ -1,7 +1,7 @@
 import { MessageSquare } from "lucide-react";
 import { useApp } from "../../utils/AppContext";
 
-const ContactPage = () => {
+const ContactsPage = () => {
   const { contactForms, deleteContactForm } = useApp();
 
   return (
@@ -92,4 +92,4 @@ const ContactPage = () => {
   );
 };
 
-export default ContactPage;
+export default ContactsPage;

@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { useApp } from '../utils/AppContext.jsx';
 
-import { 
-  Building2, 
-  MapPin, 
-  Phone, 
-  Mail, 
-  ArrowRight, 
-  CheckCircle, 
-  Facebook, 
-  Instagram, 
-  Twitter 
+import {
+  Building2,
+  MapPin,
+  Phone,
+  Mail,
+  ArrowRight,
+  CheckCircle,
+  Facebook,
+  Instagram,
+  Twitter
 } from 'lucide-react';
 
 const LandingPage = ({ onNavigateToHome }) => {
@@ -25,14 +25,14 @@ const LandingPage = ({ onNavigateToHome }) => {
             <div className="bg-blue-600 p-2 rounded-lg text-white">
               <Building2 size={24} />
             </div>
-            <span className="text-xl font-bold tracking-tight">RealEstate Pro</span>
+            <span className="text-xl font-bold tracking-tight">ReState</span>
           </div>
           <div className="hidden md:flex gap-8 font-medium text-gray-600">
             <a href="#projects" className="hover:text-blue-600 transition">Projects</a>
             <a href="#clients" className="hover:text-blue-600 transition">Testimonials</a>
             <a href="#contact" className="hover:text-blue-600 transition">Contact</a>
           </div>
-          <button 
+          <button
             onClick={onNavigateToHome}
             className="bg-gray-900 text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-blue-600 transition"
           >
@@ -49,7 +49,7 @@ const LandingPage = ({ onNavigateToHome }) => {
             <span className="text-blue-600 font-serif italic">Beyond Expectations.</span>
           </h1>
           <p className="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto mb-10">
-            Leading the market in luxury real estate and commercial developments. 
+            Leading the market in luxury real estate and commercial developments.
             We turn visions into brick and mortar reality.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -73,9 +73,9 @@ const LandingPage = ({ onNavigateToHome }) => {
           {projects.map((project) => (
             <div key={project.id} className="group cursor-pointer">
               <div className="relative overflow-hidden rounded-2xl mb-4 h-64 shadow-lg">
-                <img 
-                  src={project.image} 
-                  alt={project.name} 
+                <img
+                  src={project.image}
+                  alt={project.name}
                   className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
                 />
               </div>
@@ -115,7 +115,7 @@ const LandingPage = ({ onNavigateToHome }) => {
           <div>
             <h2 className="text-4xl font-bold mb-6">Let's Discuss Your <br /> Next Property</h2>
             <p className="text-gray-600 mb-8">Ready to invest? Our team of experts is here to guide you through every step of the process.</p>
-            
+
             <div className="space-y-6">
               <div className="flex gap-4 items-center">
                 <div className="bg-blue-100 p-3 rounded-lg text-blue-600"><MapPin size={24} /></div>
@@ -128,21 +128,58 @@ const LandingPage = ({ onNavigateToHome }) => {
             </div>
           </div>
 
-          <form 
+          <form
             onSubmit={(e) => {
               e.preventDefault();
               const formData = new FormData(e.target);
-              addContactForm(Object.fromEntries(formData));
+
+              addContactForm({
+                fullName: formData.get("fullName"),
+                email: formData.get("email"),
+                mobile: formData.get("mobile"),
+                city: formData.get("city"),
+              });
+
               e.target.reset();
-              alert('Message sent successfully!');
+              alert("Message sent successfully!");
             }}
             className="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 space-y-4"
           >
-            <input name="fullName" placeholder="Full Name" required className="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" />
-            <input name="email" type="email" placeholder="Email Address" required className="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" />
-            <textarea name="message" placeholder="How can we help?" rows="4" required className="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" />
-            <button className="w-full bg-blue-600 text-white py-4 rounded-xl font-bold hover:bg-blue-700 transition">Send Message</button>
+            <input
+              name="fullName"
+              placeholder="Full Name"
+              required
+              className="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 outline-none"
+            />
+
+            <input
+              name="email"
+              type="email"
+              placeholder="Email Address"
+              required
+              className="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 outline-none"
+            />
+
+            <input
+              name="mobile"
+              type="tel"
+              placeholder="Mobile Number"
+              required
+              className="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 outline-none"
+            />
+
+            <input
+              name="city"
+              placeholder="City"
+              required
+              className="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 outline-none"
+            />
+
+            <button className="w-full bg-blue-600 text-white py-4 rounded-xl font-bold hover:bg-blue-700 transition">
+              Send Message
+            </button>
           </form>
+
         </div>
       </section>
 
@@ -152,7 +189,7 @@ const LandingPage = ({ onNavigateToHome }) => {
           <div className="flex flex-col md:flex-row justify-between items-center gap-8 mb-12">
             <div className="flex items-center gap-2">
               <Building2 className="text-blue-600" />
-              <span className="text-xl font-bold">RealEstate Pro</span>
+              <span className="text-xl font-bold">ReState</span>
             </div>
             <div className="flex gap-6">
               <Facebook className="text-gray-400 hover:text-blue-600 cursor-pointer" />
@@ -160,7 +197,7 @@ const LandingPage = ({ onNavigateToHome }) => {
               <Instagram className="text-gray-400 hover:text-pink-600 cursor-pointer" />
             </div>
           </div>
-          <p className="text-center text-gray-400 text-sm">© 2025 RealEstate Pro. All rights reserved.</p>
+          <p className="text-center text-gray-400 text-sm">© 2025 ReState Pro. All rights reserved.</p>
         </div>
       </footer>
     </div>

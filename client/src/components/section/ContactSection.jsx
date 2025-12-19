@@ -1,104 +1,87 @@
-import React, { useState } from 'react';
-import { Phone, Mail, MapPin } from 'react-feather';
-import { useApp } from '../../utils/AppContext.jsx';
+import React, { useState } from "react";
 
-const ContactSection = () => {
-  const { addContactForm } = useApp();
+const ContactForm = () => {
   const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
-    mobile: '',
-    area: ''
+    fullName: "",
+    email: "",
+    mobile: "",
+    city: "",
   });
 
-  const handleInputChange = (e) => {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const { fullName, email, mobile, city } = formData;
+
+    if (!fullName || !email || !mobile || !city) {
+      alert("Please fill all fields");
+      return;
+    }
+
+    console.log(formData); // send to backend here
+    alert("Message sent successfully!");
+
     setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
+      fullName: "",
+      email: "",
+      mobile: "",
+      city: "",
     });
   };
 
-  const handleSubmit = () => {
-    if (formData.fullName && formData.email && formData.mobile && formData.area) {
-      addContactForm(formData);
-      alert('Thank you! We will contact you soon.');
-      setFormData({ fullName: '', email: '', mobile: '', area: '' });
-    } else {
-      alert('Please fill in all fields');
-    }
-  };
-
   return (
-    <section id="contact" className="py-20 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-4xl font-bold mb-6">Get Expert Real Estate Advice Today</h2>
-            <p className="text-lg mb-8 text-blue-100">
-              Schedule a free consultation with our experienced team and take the first step towards finding your perfect property.
-            </p>
-            <div className="space-y-4">
-              <div className="flex items-center">
-                <Phone className="w-6 h-6 mr-3" />
-                <span>+1 (555) 123-4567</span>
-              </div>
-              <div className="flex items-center">
-                <Mail className="w-6 h-6 mr-3" />
-                <span>info@realestate.com</span>
-              </div>
-              <div className="flex items-center">
-                <MapPin className="w-6 h-6 mr-3" />
-                <span>123 Real Estate Blvd, City, State 12345</span>
-              </div>
-            </div>
-          </div>
-          <div className="bg-gray-700 p-8 rounded-lg">
-            <h3 className="text-2xl font-bold mb-6 text-center">Get a Free Consultation</h3>
-            <div className="space-y-4">
-              <input
-                type="text"
-                name="fullName"
-                value={formData.fullName}
-                onChange={handleInputChange}
-                placeholder="Full Name"
-                className="w-full px-4 py-3 rounded bg-transparent border-2 border-gray-400 text-white placeholder-gray-300 focus:outline-none focus:border-orange-500"
-              />
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleInputChange}
-                placeholder="Enter Email Address"
-                className="w-full px-4 py-3 rounded bg-transparent border-2 border-gray-400 text-white placeholder-gray-300 focus:outline-none focus:border-orange-500"
-              />
-              <input
-                type="tel"
-                name="mobile"
-                value={formData.mobile}
-                onChange={handleInputChange}
-                placeholder="Mobile Number"
-                className="w-full px-4 py-3 rounded bg-transparent border-2 border-gray-400 text-white placeholder-gray-300 focus:outline-none focus:border-orange-500"
-              />
-              <input
-                type="text"
-                name="area"
-                value={formData.area}
-                onChange={handleInputChange}
-                placeholder="Area, City"
-                className="w-full px-4 py-3 rounded bg-transparent border-2 border-gray-400 text-white placeholder-gray-300 focus:outline-none focus:border-orange-500"
-              />
-              <button
-                onClick={handleSubmit}
-                className="w-full bg-orange-500 text-white py-3 rounded font-semibold hover:bg-orange-600 transition"
-              >
-                Get Quick Quote
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <div className="max-w-md mx-auto bg-white p-8 rounded-xl shadow-lg">
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <input
+          type="text"
+          name="fullName"
+          value={formData.fullName}
+          onChange={handleChange}
+          placeholder="Full Name"
+          className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+
+        <input
+          type="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          placeholder="Email Address"
+          className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+
+        <input
+          type="tel"
+          name="mobile"
+          value={formData.mobile}
+          onChange={handleChange}
+          placeholder="Mobile Number"
+          className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+
+        <input
+          type="text"
+          name="city"
+          value={formData.city}
+          onChange={handleChange}
+          placeholder="City"
+          className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+
+        <button
+          type="submit"
+          className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
+        >
+          Send Message
+        </button>
+      </form>
+    </div>
   );
 };
 
-export default ContactSection;
+export default ContactForm;

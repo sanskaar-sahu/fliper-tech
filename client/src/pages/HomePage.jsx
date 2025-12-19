@@ -13,7 +13,7 @@ const HomePage = ({ onNavigateToSite, onNavigateToLogin }) => {
             <Building2 className="w-12 h-12 text-white" />
           </div>
           <h1 className="text-5xl md:text-6xl font-extrabold text-white mb-4 tracking-tight">
-            RealEstate <span className="text-blue-200">Pro</span>
+            Re <span className="text-blue-200">State</span>
           </h1>
           <p className="text-blue-100 text-lg md:text-xl font-medium opacity-90">
             Select your destination to get started
@@ -66,7 +66,7 @@ const HomePage = ({ onNavigateToSite, onNavigateToLogin }) => {
 
         {/* Footer info */}
         <p className="text-center mt-12 text-blue-100 text-sm opacity-60">
-          © 2025 RealEstate Pro Management System. All rights reserved.
+          © 2025 ReState Management System. All rights reserved.
         </p>
       </div>
     </div>

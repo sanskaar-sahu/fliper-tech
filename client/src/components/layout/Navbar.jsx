@@ -10,7 +10,7 @@ const Navbar = ({ onNavigateToAdmin }) => {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <Home className="w-8 h-8 text-blue-600" />
-            <span className="ml-2 text-xl font-bold text-gray-800">RealEstate</span>
+            <span className="ml-2 text-xl font-bold text-gray-800">ReState</span>
           </div>
           
           <div className="hidden md:flex space-x-8">
