@@ -1,4 +1,4 @@
-# 🏢 RealEstate Pro – Landing Page & Admin Portal
+# 🏢 ReState – Landing Page & Admin Portal
 
 A modern **Real Estate Landing Page** built using **React + Tailwind CSS**, featuring dynamic project listings, client testimonials, and a backend-connected contact form.  
 Includes an **Admin Portal** for managing content and user inquiries.
