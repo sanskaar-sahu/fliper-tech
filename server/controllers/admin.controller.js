@@ -39,6 +39,8 @@ export const adminLogin =async (req, res) => {
     throw new Error("Invalid credentials");
   }
 
+  console.log("Admin logged in:", admin.email);
+
   res.status(200).json({
     success: true,
     token: generateToken(admin._id)

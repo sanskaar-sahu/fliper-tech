@@ -23,7 +23,7 @@ app.use('/api/projects', projectRoutes);
 app.use('/api/clients', clientRoutes); 
 app.use('/api/contacts', contactRoutes); 
 app.use('/api/newsletter', newsletterRoutes);
-app.use('/' , adminRoutes)
+app.use('/api/admin' , adminRoutes)
 
 
 
