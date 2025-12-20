@@ -69,20 +69,41 @@ const LandingPage = ({ onNavigateToHome }) => {
           <h2 className="text-3xl font-bold mb-2">Featured Projects</h2>
           <div className="w-20 h-1.5 bg-blue-600 rounded-full"></div>
         </div>
+
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project) => (
-            <div key={project.id} className="group cursor-pointer">
-              <div className="relative overflow-hidden rounded-2xl mb-4 h-64 shadow-lg">
-                <img
-                  src={project.image}
-                  alt={project.name}
-                  className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
-                />
+          {projects.map((project) => {
+            const [expanded, setExpanded] = useState(false);
+
+            return (
+              <div key={project._id} className="group cursor-pointer">
+                <div className="relative overflow-hidden rounded-2xl mb-4 h-64 shadow-lg">
+                  <img
+                    src={project.image}
+                    alt={project.name}
+                    className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                  />
+                </div>
+
+                <h3 className="text-xl font-bold group-hover:text-blue-600 transition">
+                  {project.name}
+                </h3>
+
+                <p
+                  className={`text-gray-500 mt-2 transition-all duration-300 ${expanded ? "" : "line-clamp-2"
+                    }`}
+                >
+                  {project.description}
+                </p>
+
+                <button
+                  onClick={() => setExpanded(!expanded)}
+                  className="mt-2 text-sm font-semibold text-blue-600 hover:text-blue-700 transition"
+                >
+                  {expanded ? "Show Less" : "Show More"}
+                </button>
               </div>
-              <h3 className="text-xl font-bold group-hover:text-blue-600 transition">{project.name}</h3>
-              <p className="text-gray-500 line-clamp-2 mt-2">{project.description}</p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 
