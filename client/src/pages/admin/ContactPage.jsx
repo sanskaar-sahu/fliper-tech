@@ -3,6 +3,7 @@ import { useApp } from "../../utils/AppContext";
 
 const ContactsPage = () => {
   const { contactForms, deleteContactForm } = useApp();
+  console.log("Contact Forms:", contactForms);
 
   return (
     <div className="p-6">

@@ -21,6 +21,7 @@ export const AppProvider = ({ children }) => {
   useEffect(() => {
     fetchProjects();
     fetchClients();
+    fetchContactForms();
   }, []);
 
   const fetchProjects = async () => {
@@ -119,6 +120,15 @@ const login = async (email, password) => {
     setIsAuthenticated(false);
   };
 
+  const fetchContactForms = async () => {
+  try {
+    const { data } = await API.get("/api/contacts");
+    setContactForms(data);
+  } catch (error) {
+    console.error("Failed to fetch contact forms", error);
+  }
+};
+
   return (
     <AppContext.Provider
       value={{
@@ -137,6 +147,7 @@ const login = async (email, password) => {
         deleteContactForm,
         addSubscribedEmail,
         deleteSubscribedEmail,
+        fetchContactForms,
         login,
         logout,
       }}
